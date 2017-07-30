@@ -1,3 +1,4 @@
+<!-- Michael Osgood / Train Schedule -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,24 +7,26 @@
   	<!-- Reset CSS--> 
 	<link rel="stylesheet" type="text/css" href="Reset.css">
 	<!-- Google Font-->
-	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
 	<!-- Bootstrap File -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   	<!--CSS-->
   	<link rel="stylesheet" type="text/css" href="Style.css">
  	 <!-- JQuery -->
  	 <script src="https://code.jquery.com/jquery.js"></script>
+ 	 <!--Firebase-->
+ 	 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 </head>
 
 <body>
 	<!--Train Schedule Jumbotron-->
 	<div id="wrapper" class="container-fluid">
-		<div id="jumbotron" class="jumbotron">
+		<div class="jumbotron">
         	<h1 id="title" class="text-center">Train Schedule!</h1>
 		</div>
 
 		<!--Current Train Schedule Panel-->
-	    <div class="panel panel-primary">
+	    <div class="panel panel-default">
 	    	<div class="panel-heading">Current Train Schedule</div>
 	    	<div id="trainDiv" class="panel-body">
 	    		<table id="trainTable" style="width:100%">
@@ -39,7 +42,7 @@
 	    </div>
 
 	    <!--Add a Train Panel-->
-	    <div class="panel panel-primary">
+	    <div class="panel panel-default">
 	    	<div class="panel-heading">Add a Train</div>
 	    	<div class="panel-body">
 	    		<form role="form">
@@ -63,8 +66,8 @@
               	</form>
 	    	</div>
 	    </div>
-	    
     </div><!--wrapper-->
+	
 
 
 </body>

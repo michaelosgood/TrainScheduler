@@ -1,5 +1,6 @@
+/* Michael Osgood / Train Schedule */
 body {
-	background-color: ;
+	background-color: black;
 }
 
 h1 {
@@ -7,21 +8,18 @@ h1 {
 }
 
 .jumbotron {
-	background-color: #337ab7;
-	font-family: "Arial Black", Gadget, sans-serif;
+	background-color:;
+	font-family: 'Limelight', cursive;
 }
 
 .panel-heading {
-	font-family: "Arial Black", Gadget, sans-serif;
-	font-size: 20px;
+	font-family: 'Limelight', cursive;
+	font-size: 22px;
 }
 
 #wrapper {
 	width: 75%;
-	font-family: "Arial Black", Gadget, sans-serif;
-	font-size: 14px;
+	font-family: 'Limelight', cursive;
+	font-size: 18px;
 }
 
-.panel {
-	background-color: white;
-} 
