@@ -1,5 +1,7 @@
 // Michael Osgood / Train Schedule 
 console.log("Page Loaded");
+console.log(moment().format("HH:mm")); // Console logs date and time in 24 hour format
+console.log(moment().startOf('hour').fromNow()); // Console logs minutes from now
 
 // Initialize Firebase
 var config = {
@@ -23,14 +25,11 @@ var train = {
 	frequency: "",
 }
 
-// Needs to calculate when next train will arrive
-// Should be relative to current time
-var nextTrain = "";
 
 // Function to add train when button is clicked
 $("#addTrain").on("click", function(){
 	event.preventDefault(); // Prevents page from refreshing when button is clicked
-	console.log("You've Clicked Me"); // Console Log the that button has been clicked
+	console.log("Submit Button Clicked"); // Console Log the that button has been clicked
 
 	// Storing the data that the user inputs
 	train.name = $("#name-input").val().trim();
@@ -46,3 +45,34 @@ $("#addTrain").on("click", function(){
 	    trainFrequency: train.frequency,
     });
 });
+
+// Used to pull data from Firebase
+database.ref().on("child_added", function(snapshot) {
+  console.log(snapshot.val());
+
+  // Appending the data from Firebase to our table on HTML
+  $("#trainTable").append("<tr><td>"+
+  	snapshot.val().trainName+"</td><td>"+
+  	snapshot.val().trainDestination+"</td><td>"+
+  	snapshot.val().trainFrequency+"</td></tr>");
+});
+
+
+// Need to find  a way to get the first train time format changed to military time
+
+// Need to create a variable to capture first train time
+
+// Need a variable to capture train frequency 
+
+// Need a nextArrival variable
+// Need a minutesAway variable
+// use train frequency and first train time variables 
+// to calculate next train arrival time relative to current time
+
+// Need to append next arrival time on the trainTable
+
+// Need to append minutes away on the trainTable
+
+
+
+
