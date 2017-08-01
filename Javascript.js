@@ -1,4 +1,4 @@
-// Michael Osgood / Train Schedule 
+// Michael Osgood / Train Scheduler
 // console.log("Page Loaded");
 console.log(moment().format("HH:mm")); // Console logs date and time in 24 hour format
 // console.log(moment().startOf('hour').fromNow()); // Console logs minutes from now
