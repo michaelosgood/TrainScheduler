@@ -1,7 +1,7 @@
 // Michael Osgood / Train Schedule 
-console.log("Page Loaded");
+// console.log("Page Loaded");
 console.log(moment().format("HH:mm")); // Console logs date and time in 24 hour format
-console.log(moment().startOf('hour').fromNow()); // Console logs minutes from now
+// console.log(moment().startOf('hour').fromNow()); // Console logs minutes from now
 
 // Initialize Firebase
 var config = {
@@ -24,7 +24,6 @@ var train = {
 	time: "",
 	frequency: "",
 }
-
 
 // Function to add train when button is clicked
 $("#addTrain").on("click", function(){
@@ -57,17 +56,48 @@ database.ref().on("child_added", function(snapshot) {
   	snapshot.val().trainFrequency+"</td></tr>");
 });
 
+// I am trying to get the calculations completed in this seciton
+//---------------Construction Zone---------------------------------
 
+   // Frequency (minutes) of train
+   // I am stuck at trying to get the user's frequency input and assigning 
+   // it to my tFrequency variable (and should I get it from Firebase or the user?)
+    var tFrequency = $("#frequency-input");
+    console.log(tFrequency);
+
+    // First train time 
+    // I also need to find out how to take the user's time input and converting 
+    // it to a variable 
+    var firstTime = $("#time-input");
+
+
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+    // Time apart (remainder)
+    var tRemainder = diffTime % tFrequency;
+    console.log(tRemainder);
+
+    // Minute Until Train
+    var tMinutesTillTrain = tFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+//-------------------------End of Construction Zone------------------
+
+// PSUEDOCODE
 // Need to find  a way to get the first train time format changed to military time
-
-// Need to create a variable to capture first train time
-
-// Need a variable to capture train frequency 
-
-// Need a nextArrival variable
-// Need a minutesAway variable
-// use train frequency and first train time variables 
-// to calculate next train arrival time relative to current time
 
 // Need to append next arrival time on the trainTable
 
