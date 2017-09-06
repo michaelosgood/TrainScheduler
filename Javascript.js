@@ -1,7 +1,7 @@
 // Michael Osgood / Train Scheduler
-// console.log("Page Loaded");
+
+// Console logs date and time in 24 hour format to verify that moment.js is working
 console.log(moment().format("HH:mm")); // Console logs date and time in 24 hour format
-// console.log(moment().startOf('hour').fromNow()); // Console logs minutes from now
 
 // Initialize Firebase
 var config = {
@@ -33,75 +33,34 @@ $("#addTrain").on("click", function(){
 	// Storing the data that the user inputs
 	train.name = $("#name-input").val().trim();
 	train.destination = $("#destination-input").val().trim();
-	train.time = $("#time-input").val().trim();
+	train.time = moment($("#time-input").val().trim(), "HH:mm").subtract(10, "years").format("X");
 	train.frequency = $("#frequency-input").val().trim();
 
 	// Pushes our data to Firebase
-	database.ref().push({ 
-	    trainName: train.name,
-	    trainDestination: train.destination,
-	    trainTime: train.time,
-	    trainFrequency: train.frequency,
-    });
+	database.ref().push(train);
+  alert("Train Added!");
+  return false;
 });
 
-// Used to pull data from Firebase
+// Used to pull data from Firebase and display it on #trainTable
 database.ref().on("child_added", function(snapshot) {
-  console.log(snapshot.val());
+  var name = snapshot.val().name;
+    var destination = snapshot.val().destination;
+    var frequency = snapshot.val().frequency;
+    var time = snapshot.val().time;
 
-  // Appending the data from Firebase to our table on HTML
-  $("#trainTable").append("<tr><td>"+
-  	snapshot.val().trainName+"</td><td>"+
-  	snapshot.val().trainDestination+"</td><td>"+
-  	snapshot.val().trainFrequency+"</td></tr>");
+    var remainder = moment().diff(moment.unix(time),"minutes")%frequency;
+    var minutes = frequency - remainder;
+    var arrival = moment().add(minutes,"m").format("hh:mm A");
+
+    console.log(remainder);
+    console.log(minutes);
+    console.log(arrival);
+
+    $("#trainTable > tBody").append("<tr><td>"+name+"</td><td>"+destination+"</td><td>"+frequency+
+    "</td><td>"+arrival+"</td><td>"+minutes+"</td></tr>");
 });
 
-// I am trying to get the calculations completed in this seciton
-//---------------Construction Zone---------------------------------
-
-   // Frequency (minutes) of train
-   // I am stuck at trying to get the user's frequency input and assigning 
-   // it to my tFrequency variable (and should I get it from Firebase or the user?)
-    var tFrequency = $("#frequency-input");
-    console.log(tFrequency);
-
-    // First train time 
-    // I also need to find out how to take the user's time input and converting 
-    // it to a variable 
-    var firstTime = $("#time-input");
-
-
-    // First Time (pushed back 1 year to make sure it comes before current time)
-    var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
-    console.log(firstTimeConverted);
-
-    // Current Time
-    var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
-
-    // Difference between the times
-    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
-
-    // Time apart (remainder)
-    var tRemainder = diffTime % tFrequency;
-    console.log(tRemainder);
-
-    // Minute Until Train
-    var tMinutesTillTrain = tFrequency - tRemainder;
-    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
-    // Next Train
-    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-//-------------------------End of Construction Zone------------------
-
-// PSUEDOCODE
-// Need to find  a way to get the first train time format changed to military time
-
-// Need to append next arrival time on the trainTable
-
-// Need to append minutes away on the trainTable
 
 
 
