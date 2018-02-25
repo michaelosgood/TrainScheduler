@@ -23,13 +23,21 @@
 <body>
 	<!-- Train Schedule Jumbotron -->
 	<div id="wrapper" class="container-fluid">
-		<div class="jumbotron">
+		<div >
+			<!-- Custom Logo -->
 			<img src="assets/images/TrainScheduler.svg">
 		</div>
+		
 
-		<!-- Current Train Schedule Panel -->
+
+		<!-- Train Schedule Panel -->
 	    <div class="panel panel-heading-custom">
-	    	<div class="panel-heading"><h3>Current Train Schedule</h3></div>
+			<!-- Header -->
+			<div class="panel-heading"><h3>Train Schedule</h3>
+					<!-- Clock -->
+			<div id="ClockDiv">
+				<p><span id="clock"></span></p>
+			</div></div>
 	    	<div id="trainDiv" class="panel-body">
 	    		<table id="trainTable" style="width:100%">
 	          		<tr>
@@ -41,11 +49,13 @@
 	          		</tr>
 	        	</table>
 	      	</div>
-	    </div>
-
+		</div>
+		
 	    <!-- Add a Train Panel -->
 	    <div class="panel panel-heading-custom">
-	    	<div class="panel-heading"><h3>Add a Train</h3></div>
+	    	<div class="panel-heading">
+				<h3>Add a Train</h3>
+			</div>
 	    	<div class="panel-body">
 	    		<form role="form">
               		<div class="form-group">

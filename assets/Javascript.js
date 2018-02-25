@@ -60,3 +60,14 @@ database.ref().on("child_added", function(snapshot) {
     $("#trainTable > tBody").append("<tr><td>"+name+"</td><td>"+destination+"</td><td>"+frequency+
     "</td><td>"+arrival+"</td><td>"+minutes+"</td></tr>");
 });
+
+// Clock Function
+  (function () {
+    var clockElement = document.getElementById("clock");
+    function updateClock(clock) {
+      clock.innerHTML = new Date().toLocaleTimeString();
+    }
+    setInterval(function() {
+    updateClock(clockElement);
+    }, 1000);
+    }());

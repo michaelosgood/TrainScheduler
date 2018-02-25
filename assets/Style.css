@@ -1,6 +1,6 @@
 /* Michael Osgood / Train Scheduler */
 body {
-	background-color: #ffffff;
+	background-color: #F8F8FF;
 	color: #000000;
 }
 
@@ -8,22 +8,23 @@ h3 {
 	color: #000000;
 }
 
-
-.jumbotron {
-	background-color: #d3d3d3;
-}
-
 .panel-heading {
 	font-family: 'Limelight', cursive;
 	font-size: 22px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
 }
 
 .panel-heading-custom {
-	background-color: #a9a9a9;
+	background-color: #F8F8FF;
 	text-align: center;
 }
 .panel-body {
-	background-color: #d3d3d3;
+	background-color:#F8F8FF;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
 }
 
 #wrapper {
@@ -37,7 +38,11 @@ h3 {
 }
 
 .form-control {
-	background-color: #a9a9a9;
+	background-color: #F8F8FF;
+}
+#ClockDiv {
+	width: 50%;
+	margin-left: 25%;
 }
 
 /* Media Queries */
