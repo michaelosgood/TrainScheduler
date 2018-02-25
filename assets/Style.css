@@ -4,14 +4,11 @@ body {
 	color: #000000;
 }
 
-h3 {
-	color: #000000;
-}
-
 .panel-heading {
 	font-family: 'Limelight', cursive;
 	font-size: 22px;
 	border-width: 1px;
+	border-bottom-width: 0px;
 	border-style: solid;
 	border-color: #000000;
 }
@@ -33,7 +30,7 @@ h3 {
 	font-size: 18px;
 }
 .btn {
-	background-color: #a9a9a9;
+	background-color: #d3d3d3;
 	color: #000000;
 }
 
