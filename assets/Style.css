@@ -45,6 +45,16 @@ h3 {
 	margin-left: 25%;
 }
 
+footer {
+	position:static;
+	width:100%;
+	font-size: 20px;
+	text-align: center;
+	background: #F8F8FF;
+	border-top: 1px solid #000000;
+	font-family: 'Limelight', cursive;
+  }
+
 /* Media Queries */
 @media only screen and (max-width: 868px) {
 	#wrapper {
