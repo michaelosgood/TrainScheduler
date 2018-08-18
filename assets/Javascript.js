@@ -39,6 +39,13 @@ $("#addTrain").on("click", function(){
 	// Pushes our data to Firebase
 	database.ref().push(train);
   alert("Train Added!");
+
+  // Clears all of the text-boxes
+  $("#name-input").val("");
+  $("#destination-input").val("");
+  $("#time-input").val("");
+  $("#frequency-input").val("");
+  
   return false;
 });
 
